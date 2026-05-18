@@ -3,40 +3,42 @@ import java.util.ArrayList;
 
 public class Transaksi {
     int idTransaksi;
-    double persenDiskon;
-    double persenPajak;
+    int persenDiskon;
+    int persenPajak;
     LocalDateTime tanggalTransaksi;
-    double subTotal = 0;
+    int subTotal = 0;
     ArrayList<Barang> listBarang = new ArrayList<>();
-    double totalAkhir;
+    int totalAkhir;
 
     // tambah barang
-    public Barang tambahBarang(Barang barang) {
-        listBarang.add(barang);
-        return barang;
+    public Barang tambahBarang(Barang... barangBaru) {
+        for (Barang barang : barangBaru) {
+            listBarang.add(barang);
+        }
+        return barangBaru[0];
     }
 
     // hitung subtotal
-    public double hitungSubtotal() {
-        subtotal = 0;
+    public int hitungSubtotal() {
+        subTotal = 0;
         for (Barang barang : listBarang) {
-            subtotal += barang.harga * barang.jumlah;
+            subTotal += barang.hargaBarangPerSatuan;
         }
-        return subtotal;
+        return subTotal;
     }
 
     // hitung diskon
-    public double hitungNominalDiskon() {
+    public int hitungNominalDiskon() {
         return hitungSubtotal() * (persenDiskon / 100);
     }
 
     // hitung pajak
-    public double hitungNominalPajak() {
+    public int hitungNominalPajak() {
         return hitungSubtotal() * (persenPajak / 100);
     }
 
     // hitung total akhir
-    public double hitungTotalAkhir() {
+    public int hitungTotalAkhir() {
         totalAkhir = hitungSubtotal() - hitungNominalDiskon() + hitungNominalPajak();
         return totalAkhir;
     }
@@ -47,7 +49,7 @@ public class Transaksi {
         System.out.println("Tanggal Transaksi: " + tanggalTransaksi);
         System.out.println("\nDaftar Barang:");
         for (Barang barang : listBarang) {
-            System.out.println("- " + barang.nama + " x" + barang.jumlah + " @ " + barang.harga);
+            System.out.println("- " + barang.namaBarang + " @ " + barang.hargaBarangPerSatuan);
         }
         System.out.println("\nSubtotal: " + hitungSubtotal());
         System.out.println("Diskon (" + persenDiskon + "%): " + hitungNominalDiskon());
@@ -56,5 +58,4 @@ public class Transaksi {
     }
 
 
-}
 }
