@@ -32,9 +32,9 @@ public class Barang {
 class Kertas extends Barang {
     int lembar;
     int ketebalanKertas;
-    int ukuranKertas;
     String jenisKertas;
     String merkKertas;
+    String ukuranKertas;
 
     @Override
     public void tampilkanBarang(){
@@ -49,8 +49,8 @@ class Kertas extends Barang {
     }
 }
 class AlatTulis extends Barang {
-    String merkAlatTulis;
     String jenisAlatTulis;
+    String merkAlatTulis;
     String warnaAlatTulis;
 
     @Override
@@ -64,9 +64,9 @@ class AlatTulis extends Barang {
     }
 }
 class AlatKantor extends Barang {
-    String bahan;
     String jenisAlatKantor;
     String merkAlatKantor;
+    String bahan;
     String warnaAlatKantor;
 
     @Override
