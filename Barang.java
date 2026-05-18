@@ -24,7 +24,7 @@ public class Barang {
             this.stokBarang = stok;
             this.hargaBarangPerBox = hargaPerBox;
             this.hargaBarangPerSatuan = hargaPerSatuan;
-        }
+        } 
 
         class Kertas extends Barang {
             int lembar;
@@ -34,7 +34,7 @@ public class Barang {
             String merk;
 
             public void tampilkanBarang(){
-                
+
             }
         }
         class AlatTulis extends Barang {
@@ -50,6 +50,6 @@ public class Barang {
         class Buku extends Barang {
             String jenisBuku;
             String merk;
-            int lembar;
+            int lembar; //
         }
 }
