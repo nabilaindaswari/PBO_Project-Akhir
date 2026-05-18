@@ -1,3 +1,4 @@
+//parent class
 public class Barang {
         String idBarang;
         String namaBarang;
@@ -5,8 +6,7 @@ public class Barang {
         int stokBarang;
         int hargaBarangPerSatuan;
         int hargaBarangPerBox;
-        int kolom;
-        int baris;
+        static int totalStokBarang;
 
         public void tampilkanBarang(){
             System.out.println("----------- Barang ------------");
@@ -16,76 +16,82 @@ public class Barang {
             System.out.println("Detail Barang: " + detailBarang);
             System.out.println("Harga Barang Per-Satuan: " + hargaBarangPerSatuan);
             System.out.println("Harga Barang Per-Box: " + hargaBarangPerBox);
-            System.out.println("Kolom: " + kolom);
-            System.out.println("Baris: " + baris);
-            System.out.println();
+            System.out.println("Total Stok Barang: " + totalStokBarang);
         }
         public void editBarang(int stok, int hargaPerBox, int hargaPerSatuan){
+            Barang.totalStokBarang -= this.stokBarang;
             this.stokBarang = stok;
+            Barang.totalStokBarang += stok;
+
             this.hargaBarangPerBox = hargaPerBox;
             this.hargaBarangPerSatuan = hargaPerSatuan;
         }
+}
 
-        class Kertas extends Barang {
-            int lembar;
-            int ketebalanKertas;
-            int ukuranKertas;
-            String jenisKertas;
-            String merkKertas;
+//child class
+class Kertas extends Barang {
+    int lembar;
+    int ketebalanKertas;
+    int ukuranKertas;
+    String jenisKertas;
+    String merkKertas;
 
-            @Override
-            public void tampilkanBarang(){
-                super.tampilkanBarang();
+    @Override
+    public void tampilkanBarang(){
+    super.tampilkanBarang();
                 
-                System.out.println("Lembar Kertas: " + lembar);
-                System.out.println("Jenis Kertas: " + jenisKertas);
-                System.out.println("Merk Kertas: " + merkKertas);
-                System.out.println("Ketebalan Kertas: " + ketebalanKertas);
-                System.out.println("Ukuran Kertas: " + ukuranKertas);
-            }
-        }
-        class AlatTulis extends Barang {
-            String merkAlatTulis;
-            String jenisAlatTulis;
-            String warnaAlatTulis;
+    System.out.println("Lembar Kertas: " + lembar);
+    System.out.println("Jenis Kertas: " + jenisKertas);
+    System.out.println("Merk Kertas: " + merkKertas);
+    System.out.println("Ketebalan Kertas: " + ketebalanKertas);
+    System.out.println("Ukuran Kertas: " + ukuranKertas);
+    System.out.println();
+    }
+}
+class AlatTulis extends Barang {
+    String merkAlatTulis;
+    String jenisAlatTulis;
+    String warnaAlatTulis;
 
-            @Override
-            public void tampilkanBarang(){
-                super.tampilkanBarang();
+    @Override
+    public void tampilkanBarang(){
+    super.tampilkanBarang();
                 
-                System.out.println("Jenis Alat Tulis: " + jenisAlatTulis);
-                System.out.println("Merk Alat Tulis: " + merkAlatTulis);
-                System.out.println("Warna Alat Tulis: " + warnaAlatTulis);
-            }
-        }
-        class AlatKantor extends Barang {
-            String bahan;
-            String jenisAlatKantor;
-            String merkAlatKantor;
-            String warnaAlatKantor;
+    System.out.println("Jenis Alat Tulis: " + jenisAlatTulis);
+    System.out.println("Merk Alat Tulis: " + merkAlatTulis);
+    System.out.println("Warna Alat Tulis: " + warnaAlatTulis);
+    System.out.println();
+    }
+}
+class AlatKantor extends Barang {
+    String bahan;
+    String jenisAlatKantor;
+    String merkAlatKantor;
+    String warnaAlatKantor;
 
-            @Override
-            public void tampilkanBarang(){
-                super.tampilkanBarang();
+    @Override
+    public void tampilkanBarang(){
+    super.tampilkanBarang();
                 
-                System.out.println("Jenis Alat Kantor: " + jenisAlatKantor);
-                System.out.println("Merk Alat Kantor: " + merkAlatKantor);
-                System.out.println("Bahan Alat Kantor: " + bahan);
-                System.out.println("Warna Alat Kantor: " + warnaAlatKantor);
-            }
-        }
-        class Buku extends Barang {
-            String jenisBuku;
-            String merkBuku;
-            int lembarBuku;
+    System.out.println("Jenis Alat Kantor: " + jenisAlatKantor);
+    System.out.println("Merk Alat Kantor: " + merkAlatKantor);
+    System.out.println("Bahan Alat Kantor: " + bahan);
+    System.out.println("Warna Alat Kantor: " + warnaAlatKantor);
+    System.out.println();
+    }
+}
+class Buku extends Barang {
+    String jenisBuku;
+    String merkBuku;
+    int lembarBuku;
 
-            @Override
-            public void tampilkanBarang(){
-                super.tampilkanBarang();
+    @Override
+    public void tampilkanBarang(){
+    super.tampilkanBarang();
                 
-                System.out.println("Jenis Buku: " + jenisBuku);
-                System.out.println("Merk Buku: " + merkBuku);
-                System.out.println("Jumlah Lembar Buku: " + lembarBuku);
-            }
-        }
+    System.out.println("Jenis Buku: " + jenisBuku);
+    System.out.println("Merk Buku: " + merkBuku);
+    System.out.println("Jumlah Lembar Buku: " + lembarBuku);
+    System.out.println();
+    }
 }
