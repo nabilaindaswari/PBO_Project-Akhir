@@ -1,6 +1,22 @@
 //test
 public class SistemInventaris{
-    //test dari ummu
-    int test = 1;
-    String tesss = " ";
+    //
+
+    public void tampilkan(){
+        System.out.println("Anda sedang mengakses sistem inventaris : ");
+    }
+   
+}
+
+class SistemInventarisBarang{
+    public void tampilkan{
+        System.out.println("Anda sedang mencoba menampilkan inventaris barang");
+    }
+}
+
+
+class SistemInventarisHistorisBarang{
+    public void tampilkan{
+        System.out.println("Anda sedang mencoba menampilkan inventaris barang");
+    }
 }
