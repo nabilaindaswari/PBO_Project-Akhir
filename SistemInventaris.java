@@ -1,58 +1,61 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class SistemInventaris{
-    static List<List<Barang>> listBarang = new ArrayList<>(); 
-    static List<List<Transaksi>> listTransaksi = new ArrayList<>(); 
-    public void tampilkan(){
+public class SistemInventaris {
+    
+    public void tampilkan() {
         System.out.println("Anda sedang mengakses sistem inventaris : ");
     }
-   
 }
 
-class SistemInventarisBarang extends SistemInventaris{
+class SistemInventarisBarang extends SistemInventaris {
+
+    List<List<Barang>> inventarisBarang = new ArrayList<>(); 
+
     @Override
-    public void tampilkan(){
+    public void tampilkan() {
         System.out.println("Anda sedang mencoba menampilkan inventaris barang");
-        for(Barang[] lst: listBarang ){
+        
+        for(List<Barang> barisBarang : inventarisBarang) { 
             System.out.println("");
-            for(Barang isi: lst){
-                    System.out.println("ID: " + isi.idBarang + 
-                                       " | Nama: " + isi.namaBarang + 
-                                       " | Detail: " + isi.detailBarang + 
-                                       " | Stok: " + isi.stokBarang + 
-                                       " | Harga/Satuan: " + isi.hargaBarangPerSatuan + 
-                                       " | Harga/Box: " + isi.hargaBarangPerBox + 
-                                       " | Posisi:  ");
+            for(Barang isi : barisBarang) {
+                System.out.println("ID: " + isi.idBarang + 
+                                   " | Nama: " + isi.namaBarang + 
+                                   " | Detail: " + isi.detailBarang + 
+                                   " | Stok: " + isi.stokBarang + 
+                                   " | Harga/Satuan: " + isi.hargaBarangPerSatuan + 
+                                   " | Harga/Box: " + isi.hargaBarangPerBox); 
             }
         }
     }
-    public void tambahkan(Barang barang, int index){
-        listBarang.add(barang); //memasukkan barang pada baris sesuai index.
+    
+    public void tambahkan(Barang barang, int indexBaris) {
+        while (inventarisBarang.size() <= indexBaris) {
+            inventarisBarang.add(new ArrayList<>());
+        }
+        inventarisBarang.get(indexBaris).add(barang); 
     }
-
 }
 
-
-class SistemInventarisHistorisBarang extends SistemInventaris{
+class SistemInventarisHistoryTransaksi extends SistemInventaris {
+    List<Transaksi> inventarisTransaksi = new ArrayList<>(); 
     
     @Override
-    public void tampilkan(){
-        System.out.println("Anda sedang mencoba menampilkan inventaris barang");
-        for(Barang isi: listTransaksi){
-                    System.out.println("ID Transaksi: " + isi.idTransaksi + 
-                                       " | Persen Diskon: " + isi.persenDiskon + 
-                                       " | Persen Pajak: " + isi.persenPajak + 
-                                       " | Tanggal Transaksi: " + isi.tanggalTransaksi + 
-                                       " | subTotal: " + isi.subTotal + 
-                                       " | List Barang: " + isi.listBarang + 
-                                       " | Total Akhir: " + isi.totalAkhir);
-            }
+    public void tampilkan() {
+        System.out.println("Anda sedang mencoba menampilkan historis transaksi");
+        
+        // Tipe datanya diubah menjadi Transaksi
+        for(Transaksi isi : inventarisTransaksi) {
+            System.out.println("ID Transaksi: " + isi.idTransaksi + 
+                               " | Persen Diskon: " + isi.persenDiskon + 
+                               " | Persen Pajak: " + isi.persenPajak + 
+                               " | Tanggal Transaksi: " + isi.tanggalTransaksi + 
+                               " | subTotal: " + isi.subTotal + 
+                               " | Total Akhir: " + isi.totalAkhir);
+        }
     }
 
-    public void tambahkan(Transaksi transaksi){
-    
+    public void tambahkan(Transaksi transaksi) {
+        inventarisTransaksi.add(transaksi);
     }
-
 }

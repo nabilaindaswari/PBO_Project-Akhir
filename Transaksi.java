@@ -6,7 +6,7 @@ public class Transaksi {
     double persenDiskon;
     double persenPajak;
     LocalDateTime tanggalTransaksi;
-    double subtotal = 0;
+    double subTotal = 0;
     ArrayList<Barang> listBarang = new ArrayList<>();
     double totalAkhir;
 
