@@ -2,8 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import java.util.ArrayList;
-
 public class SistemInventaris{
     static List<List<Barang>> listBarang = new ArrayList<>(); 
     static List<List<Transaksi>> listTransaksi = new ArrayList<>(); 
