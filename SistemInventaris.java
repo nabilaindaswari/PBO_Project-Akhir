@@ -1,1 +1,4 @@
 //test
+public class SistemInventaris{
+    
+}
