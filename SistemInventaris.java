@@ -13,16 +13,32 @@ public class SistemInventaris {
 class SistemInventarisBarang extends SistemInventaris {
 
     static List<List<Barang>> inventarisBarang = new ArrayList<>(); 
-    Map<String, Integer> kategori = new HashMap<>() {{
+    static Map<String, Integer> kategori = new HashMap<>() {{
         put("Kertas", 0);
         put("AlatTulis", 1);
         put("AlatKantor", 2);
         put("Buku", 3);
     }};
 
-    public int cekKolomTerakhir(String baris){
+    static public int cekKolomTerakhir(String baris){
+        if (!kategori.containsKey(baris)) {
+            return 0; 
+        }
         int indeksTerakhir = inventarisBarang.get(kategori.get(baris)).size();
         return indeksTerakhir;
+    }
+
+    static public void masukkanBarang(Barang barang, String kat, int kolom){
+        int indeksBaris = kategori.get(kat);
+        inventarisBarang.get(indeksBaris).add(kolom, barang);
+    }
+
+    static public void editBarang(Barang barang){
+        int tempKolom = barang.kolom;
+        int barangBaris = kategori.get(barang.kategori);
+        int tempBaris = barangBaris;
+        inventarisBarang.get(tempBaris).set(tempKolom, barang);
+
     }
 
     @Override

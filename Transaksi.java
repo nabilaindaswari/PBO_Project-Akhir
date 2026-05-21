@@ -37,7 +37,7 @@ public class Transaksi {
         }
         return subtotal;
     }
-
+//
     // hitung diskon
     private int hitungNominalDiskon() {
         return hitungSubtotal() * persenDiskon / 100;
