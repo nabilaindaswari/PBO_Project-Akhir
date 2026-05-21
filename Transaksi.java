@@ -19,7 +19,7 @@ public class Transaksi {
     }
 
     // hitung subtotal
-    public int hitungSubtotal() {
+    private int hitungSubtotal() {
         subTotal = 0;
         for (Barang barang : listBarang) {
             subTotal += barang.hargaBarangPerSatuan;
@@ -28,17 +28,17 @@ public class Transaksi {
     }
 
     // hitung diskon
-    public int hitungNominalDiskon() {
+    private int hitungNominalDiskon() {
         return hitungSubtotal() * (persenDiskon / 100);
     }
 
     // hitung pajak
-    public int hitungNominalPajak() {
+    private int hitungNominalPajak() {
         return hitungSubtotal() * (persenPajak / 100);
     }
 
     // hitung total akhir
-    public int hitungTotalAkhir() {
+    private int hitungTotalAkhir() {
         totalAkhir = hitungSubtotal() - hitungNominalDiskon() + hitungNominalPajak();
         return totalAkhir;
     }
