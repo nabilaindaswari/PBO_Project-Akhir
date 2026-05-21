@@ -1,5 +1,5 @@
 //parent class
-public class Barang {
+abstract public class Barang {
         String idBarang;
         String namaBarang;
         String detailBarang;
