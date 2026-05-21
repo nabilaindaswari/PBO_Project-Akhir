@@ -6,35 +6,44 @@ public class Transaksi {
     int persenDiskon;
     int persenPajak;
     LocalDateTime tanggalTransaksi;
-    int subTotal = 0;
-    ArrayList<Barang> listBarang = new ArrayList<>();
+    int subtotal = 0; 
     int totalAkhir;
+    ArrayList<Barang> listBarang = new ArrayList<>();
+
+    public Transaksi(){ // constructor 1
+    
+    }
+
+    public Transaksi(int idTransaksi, int persenDiskon, int persenPajak, LocalDateTime tanggalTransaksi) { // constructor 2
+        this.idTransaksi = idTransaksi;
+        this.persenDiskon = persenDiskon;
+        this.persenPajak = persenPajak;
+        this.tanggalTransaksi = tanggalTransaksi;
+    }
 
     // tambah barang
-    public Barang tambahBarang(Barang... barangBaru) {
+    public void tambahBarang(Barang... barangBaru) {
         for (Barang barang : barangBaru) {
             listBarang.add(barang);
         }
-        return barangBaru[0];
     }
-
     // hitung subtotal
     private int hitungSubtotal() {
-        subTotal = 0;
+        subtotal = 0;
         for (Barang barang : listBarang) {
-            subTotal += barang.hargaBarangPerSatuan;
+            subtotal += barang.hargaBarangPerSatuan;
         }
-        return subTotal;
+        return subtotal;
     }
 
     // hitung diskon
     private int hitungNominalDiskon() {
-        return hitungSubtotal() * (persenDiskon / 100);
+        return hitungSubtotal() * persenDiskon / 100;
     }
 
     // hitung pajak
     private int hitungNominalPajak() {
-        return hitungSubtotal() * (persenPajak / 100);
+        return hitungSubtotal() * persenPajak / 100;
     }
 
     // hitung total akhir
@@ -45,17 +54,16 @@ public class Transaksi {
 
     // tampilkan transaksi
     public void tampilkanTransaksi() {
+        System.out.println("----------- Transaksi ------------");
         System.out.println("ID Transaksi: " + idTransaksi);
         System.out.println("Tanggal Transaksi: " + tanggalTransaksi);
         System.out.println("\nDaftar Barang:");
         for (Barang barang : listBarang) {
             System.out.println("- " + barang.namaBarang + " @ " + barang.hargaBarangPerSatuan);
         }
-        System.out.println("\nSubtotal: " + hitungSubtotal());
+        System.out.println("Subtotal: " + hitungSubtotal());
         System.out.println("Diskon (" + persenDiskon + "%): " + hitungNominalDiskon());
         System.out.println("Pajak (" + persenPajak + "%): " + hitungNominalPajak());
         System.out.println("Total Akhir: " + hitungTotalAkhir());
     }
-
-
 }
