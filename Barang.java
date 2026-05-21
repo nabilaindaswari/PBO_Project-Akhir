@@ -10,6 +10,8 @@ public class Barang {
         int kolom; //gak usah dimasukkin ke konstruktor
         static int totalStokBarang;
 
+
+        //bikin constructor, yang penting ada idBarang, nama barang, stok, harga, kategori
         public Barang(String idBarang, String namaBarang, int stokBarang, String Kategori){
             this.idBarang = idBarang;
             this.namaBarang = namaBarang;
@@ -18,8 +20,7 @@ public class Barang {
             this.kolom = SistemInventarisBarang.cekKolomTerakhir(Kategori);
             SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
         }
-        //bikin constructor, yang penting ada idBarang, nama barang, stok, harga, kategori
-
+        
         public void tampilkanBarang(){
             System.out.println("----------- Barang ------------");
             System.out.println("ID Barang: " + idBarang);
