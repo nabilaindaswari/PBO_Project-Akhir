@@ -6,7 +6,11 @@ public class Barang {
         int stokBarang;
         int hargaBarangPerSatuan;
         int hargaBarangPerBox;
+        String Kategori; 
+        int Kolom; //gak usah dimasukkin ke konstruktor
         static int totalStokBarang;
+
+        //bikin constructor, yang penting ada idBarang, nama barang, stok, harga, kategori
 
         public void tampilkanBarang(){
             System.out.println("----------- Barang ------------");
