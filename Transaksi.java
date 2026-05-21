@@ -3,19 +3,14 @@ import java.util.ArrayList;
 
 public class Transaksi {
     int idTransaksi;
-<<<<<<< HEAD
-    static double persenDiskon = 7;
+    double persenDiskon;
     static double persenPajak = 10;
     LocalDateTime tanggalTransaksi;
     double subTotal;
-=======
-    int persenDiskon;
-    int persenPajak;
-    LocalDateTime tanggalTransaksi;
-    int subtotal = 0; 
-    int totalAkhir;
->>>>>>> b56f7da93c478daad5e12f7f8e9f16a456101217
     ArrayList<Barang> listBarang = new ArrayList<>();
+    double totalAkhir;
+    double nominalDiskon;
+    double nominalPajak;
 
     public Transaksi(int idTransaksi, LocalDateTime tanggalTransaksi) { // constructor 1
         this.idTransaksi = idTransaksi;
@@ -23,23 +18,9 @@ public class Transaksi {
     
     }
 
-    public Transaksi(int idTransaksi, int persenDiskon, int persenPajak, LocalDateTime tanggalTransaksi) { // constructor 2
+    public Transaksi(int idTransaksi, int persenDiskon, LocalDateTime tanggalTransaksi) { // constructor 2
         this.idTransaksi = idTransaksi;
         this.persenDiskon = persenDiskon;
-        this.persenPajak = persenPajak;
-        this.tanggalTransaksi = tanggalTransaksi;
-    }
-
-    public Transaksi(int idTransaksi, LocalDateTime tanggalTransaksi) { // constructor 1
-        this.idTransaksi = idTransaksi;
-        this.tanggalTransaksi = tanggalTransaksi;
-    
-    }
-
-    public Transaksi(int idTransaksi, int persenDiskon, int persenPajak, LocalDateTime tanggalTransaksi) { // constructor 2
-        this.idTransaksi = idTransaksi;
-        this.persenDiskon = persenDiskon;
-        this.persenPajak = persenPajak;
         this.tanggalTransaksi = tanggalTransaksi;
     }
 
@@ -50,41 +31,29 @@ public class Transaksi {
         }
     }
     // hitung subtotal
-    private int hitungSubtotal() {
-        subtotal = 0;
+    private void hitungSubtotal() {
+        subTotal = 0;
         for (Barang barang : listBarang) {
-            subtotal += barang.hargaBarangPerSatuan;
+            subTotal += barang.hargaBarangPerSatuan;
         }
-        return subtotal;
     }
 //
     // hitung diskon
-<<<<<<< HEAD
     private void hitungNominalDiskon() {
-        nominalDiskon = hitungSubtotal() * (persenDiskon / 100);
+        nominalDiskon = subTotal * (persenDiskon / 100);
     }
 
     // hitung pajak
     private void hitungNominalPajak() {
-        nominalPajak = hitungSubtotal() * (persenPajak / 100);
+        nominalPajak = subTotal * (persenPajak / 100);
     }
 
     // buat transaksi dan hitung total akhir
     public void buatTransaksi() {
-=======
-    private int hitungNominalDiskon() {
-        return hitungSubtotal() * persenDiskon / 100;
-    }
-
-    // hitung pajak
-    private int hitungNominalPajak() {
-        return hitungSubtotal() * persenPajak / 100;
-    }
-
-    // hitung total akhir
-    private int hitungTotalAkhir() {
->>>>>>> b56f7da93c478daad5e12f7f8e9f16a456101217
-        totalAkhir = hitungSubtotal() - hitungNominalDiskon() + hitungNominalPajak();
+        hitungSubtotal();
+        hitungNominalDiskon();
+        hitungNominalPajak();
+        totalAkhir = subTotal - nominalDiskon + nominalPajak;
     }
 
     // tampilkan transaksi
@@ -96,9 +65,9 @@ public class Transaksi {
         for (Barang barang : listBarang) {
             System.out.println("- " + barang.namaBarang + " @ " + barang.hargaBarangPerSatuan);
         }
-        System.out.println("Subtotal: " + hitungSubtotal());
-        System.out.println("Diskon (" + persenDiskon + "%): " + hitungNominalDiskon());
-        System.out.println("Pajak (" + persenPajak + "%): " + hitungNominalPajak());
-        System.out.println("Total Akhir: " + hitungTotalAkhir());
+        System.out.println("Subtotal: Rp." + subTotal);
+        System.out.println("Diskon (" + persenDiskon + "%): Rp." + nominalDiskon);
+        System.out.println("Pajak (" + persenPajak + "%): Rp."+ nominalPajak);
+        System.out.println("Total Akhir: " + totalAkhir);
     }
 }
