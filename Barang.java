@@ -6,10 +6,18 @@ public class Barang {
         int stokBarang;
         int hargaBarangPerSatuan;
         int hargaBarangPerBox;
-        String Kategori; 
-        int Kolom; //gak usah dimasukkin ke konstruktor
+        String kategori; 
+        int kolom; //gak usah dimasukkin ke konstruktor
         static int totalStokBarang;
 
+        public Barang(String idBarang, String namaBarang, int stokBarang, String Kategori){
+            this.idBarang = idBarang;
+            this.namaBarang = namaBarang;
+            this.stokBarang = stokBarang;
+            this.kategori = Kategori;
+            this.kolom = SistemInventarisBarang.cekKolomTerakhir(Kategori);
+            SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
+        }
         //bikin constructor, yang penting ada idBarang, nama barang, stok, harga, kategori
 
         public void tampilkanBarang(){
@@ -29,6 +37,8 @@ public class Barang {
 
             this.hargaBarangPerBox = hargaPerBox;
             this.hargaBarangPerSatuan = hargaPerSatuan;
+
+            SistemInventarisBarang.editBarang(this);
         }
 }
 
