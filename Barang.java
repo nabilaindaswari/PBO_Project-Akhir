@@ -6,20 +6,9 @@ abstract public class Barang {
         int stokBarang;
         int hargaBarangPerSatuan;
         int hargaBarangPerBox;
-        String kategori; 
+        String kategori;
         int kolom; //gak usah dimasukkin ke konstruktor
         static int totalStokBarang;
-
-
-        //bikin constructor, yang penting ada idBarang, nama barang, stok, harga, kategori
-        public Barang(String idBarang, String namaBarang, int stokBarang, String Kategori){
-            this.idBarang = idBarang;
-            this.namaBarang = namaBarang;
-            this.stokBarang = stokBarang;
-            this.kategori = Kategori;
-            this.kolom = SistemInventarisBarang.cekKolomTerakhir(Kategori);
-            SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
-        }
         
         public void tampilkanBarang(){
             System.out.println("----------- Barang ------------");
@@ -53,6 +42,37 @@ class Kertas extends Barang {
     String ukuranKertas;
     static int totalStokKertas;
 
+    //constructor 1
+        public Kertas(String idBarang, String namaBarang, int stokBarang, int hargaBarangPerSatuan, int hargaBarangPerBox, String Kategori, String jenisKertas, String merkKertas, String ukuranKertas) {
+            this.idBarang = idBarang;
+            this.namaBarang = namaBarang;
+            this.stokBarang = stokBarang;
+            this.hargaBarangPerSatuan = hargaBarangPerSatuan;
+            this.hargaBarangPerBox = hargaBarangPerBox;
+            this.kategori = Kategori;
+            this.kolom = SistemInventarisBarang.cekKolomTerakhir(Kategori);
+            this.jenisKertas = jenisKertas;
+            this.merkKertas = merkKertas;
+            this.ukuranKertas = ukuranKertas;
+            SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
+        }
+
+    //constructor 2
+        public Kertas(String idBarang, String namaBarang, int stokBarang, int hargaBarangPerSatuan, int hargaBarangPerBox, String Kategori, String detailBarang, String jenisKertas, String merkKertas, String ukuranKertas) {
+            this.idBarang = idBarang;
+            this.namaBarang = namaBarang;
+            this.stokBarang = stokBarang;
+            this.hargaBarangPerSatuan = hargaBarangPerSatuan;
+            this.hargaBarangPerBox = hargaBarangPerBox;
+            this.kategori = Kategori;
+            this.detailBarang = detailBarang;
+            this.kolom = SistemInventarisBarang.cekKolomTerakhir(Kategori);
+            this.jenisKertas = jenisKertas;
+            this.merkKertas = merkKertas;
+            this.ukuranKertas = ukuranKertas;
+            SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
+        }
+
     @Override
     public void tampilkanBarang(){
     super.tampilkanBarang();
@@ -72,6 +92,36 @@ class AlatTulis extends Barang {
     String warnaAlatTulis;
     static int totalStokAlatTulis;
 
+    //constructor 1
+        public AlatTulis(String idBarang, String namaBarang, int stokBarang, int hargaBarangPerSatuan, int hargaBarangPerBox, String Kategori, String jenisAlatTulis, String merkAlatTulis) {
+            this.idBarang = idBarang;
+            this.namaBarang = namaBarang;
+            this.stokBarang = stokBarang;
+            this.hargaBarangPerSatuan = hargaBarangPerSatuan;
+            this.hargaBarangPerBox = hargaBarangPerBox;
+            this.kategori = Kategori;
+            this.kolom = SistemInventarisBarang.cekKolomTerakhir(Kategori);
+            this.jenisAlatTulis = jenisAlatTulis;
+            this.merkAlatTulis = merkAlatTulis;
+            SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
+        }
+
+    //constructor 2
+        public AlatTulis(String idBarang, String namaBarang, int stokBarang, int hargaBarangPerSatuan, int hargaBarangPerBox, String Kategori, String detailBarang, String jenisAlatTulis, String merkAlatTulis, String warnaAlatTulis) {
+            this.idBarang = idBarang;
+            this.namaBarang = namaBarang;
+            this.stokBarang = stokBarang;
+            this.hargaBarangPerSatuan = hargaBarangPerSatuan;
+            this.hargaBarangPerBox = hargaBarangPerBox;
+            this.kategori = Kategori;
+            this.detailBarang = detailBarang;
+            this.kolom = SistemInventarisBarang.cekKolomTerakhir(Kategori);
+            this.jenisAlatTulis = jenisAlatTulis;
+            this.merkAlatTulis = merkAlatTulis;
+            this.warnaAlatTulis = warnaAlatTulis;
+            SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
+        }
+
     @Override
     public void tampilkanBarang(){
     super.tampilkanBarang();
@@ -90,6 +140,37 @@ class AlatKantor extends Barang {
     String warnaAlatKantor;
     static int totalStokAlatKantor;
 
+    //constructor 1
+        public AlatKantor(String idBarang, String namaBarang, int stokBarang, int hargaBarangPerSatuan, int hargaBarangPerBox, String Kategori, String jenisAlatKantor, String merkAlatKantor) {
+            this.idBarang = idBarang;
+            this.namaBarang = namaBarang;
+            this.stokBarang = stokBarang;
+            this.hargaBarangPerSatuan = hargaBarangPerSatuan;
+            this.hargaBarangPerBox = hargaBarangPerBox;
+            this.kategori = Kategori;
+            this.kolom = SistemInventarisBarang.cekKolomTerakhir(Kategori);
+            this.jenisAlatKantor = jenisAlatKantor;
+            this.merkAlatKantor = merkAlatKantor;
+            SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
+        }
+
+    //constructor 2
+        public AlatKantor(String idBarang, String namaBarang, int stokBarang, int hargaBarangPerSatuan, int hargaBarangPerBox, String Kategori, String detailBarang, String jenisAlatKantor, String merkAlatKantor,  String bahan, String warnaAlatKantor) {
+            this.idBarang = idBarang;
+            this.namaBarang = namaBarang;
+            this.stokBarang = stokBarang;
+            this.hargaBarangPerSatuan = hargaBarangPerSatuan;
+            this.hargaBarangPerBox = hargaBarangPerBox;
+            this.kategori = Kategori;
+            this.detailBarang = detailBarang;
+            this.kolom = SistemInventarisBarang.cekKolomTerakhir(Kategori);
+            this.jenisAlatKantor = jenisAlatKantor;
+            this.merkAlatKantor = merkAlatKantor;
+            this.bahan = bahan;
+            this.warnaAlatKantor = warnaAlatKantor;
+            SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
+        }
+
     @Override
     public void tampilkanBarang(){
     super.tampilkanBarang();
@@ -107,6 +188,36 @@ class Buku extends Barang {
     String merkBuku;
     int lembarBuku;
     static int totalStokBuku;
+
+    //constructor 1
+        public Buku(String idBarang, String namaBarang, int stokBarang, int hargaBarangPerSatuan, int hargaBarangPerBox, String Kategori, String jenisBuku, String merkBuku) {
+            this.idBarang = idBarang;
+            this.namaBarang = namaBarang;
+            this.stokBarang = stokBarang;
+            this.hargaBarangPerSatuan = hargaBarangPerSatuan;
+            this.hargaBarangPerBox = hargaBarangPerBox;
+            this.kategori = Kategori;
+            this.kolom = SistemInventarisBarang.cekKolomTerakhir(Kategori);
+            this.jenisBuku = jenisBuku;
+            this.merkBuku = merkBuku;
+            SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
+        }
+
+    //constructor 2
+        public Buku(String idBarang, String namaBarang, int stokBarang, int hargaBarangPerSatuan, int hargaBarangPerBox, String Kategori, String detailBarang, String jenisBuku, String merkBuku, int lembarBuku) {
+            this.idBarang = idBarang;
+            this.namaBarang = namaBarang;
+            this.stokBarang = stokBarang;
+            this.hargaBarangPerSatuan = hargaBarangPerSatuan;
+            this.hargaBarangPerBox = hargaBarangPerBox;
+            this.kategori = Kategori;
+            this.detailBarang = detailBarang;
+            this.kolom = SistemInventarisBarang.cekKolomTerakhir(Kategori);
+            this.jenisBuku = jenisBuku;
+            this.merkBuku = merkBuku;
+            this.lembarBuku = lembarBuku;
+            SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
+        }
 
     @Override
     public void tampilkanBarang(){
