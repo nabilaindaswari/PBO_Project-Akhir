@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SistemInventaris {
     
@@ -11,6 +13,17 @@ public class SistemInventaris {
 class SistemInventarisBarang extends SistemInventaris {
 
     static List<List<Barang>> inventarisBarang = new ArrayList<>(); 
+    Map<String, Integer> kategori = new HashMap<>() {{
+        put("Kertas", 0);
+        put("AlatTulis", 1);
+        put("AlatKantor", 2);
+        put("Buku", 3);
+    }};
+
+    public int cekKolomTerakhir(String baris){
+        int indeksTerakhir = inventarisBarang.get(kategori.get(baris)).size();
+        return indeksTerakhir;
+    }
 
     @Override
     public void tampilkan() {
