@@ -3,12 +3,14 @@ import java.util.ArrayList;
 
 public class Transaksi {
     int idTransaksi;
-    int persenDiskon;
-    int persenPajak;
+    static double persenDiskon;
+    static double persenPajak;
     LocalDateTime tanggalTransaksi;
-    int subTotal = 0;
+    double subTotal = 0;
     ArrayList<Barang> listBarang = new ArrayList<>();
-    int totalAkhir;
+    double totalAkhir;
+    double nominalDiskon;
+    double nominalPajak;
 
     // tambah barang
     public Barang tambahBarang(Barang... barangBaru) {
@@ -29,16 +31,18 @@ public class Transaksi {
 
     // hitung diskon
     private int hitungNominalDiskon() {
-        return hitungSubtotal() * (persenDiskon / 100);
+        nominalDiskon = hitungSubtotal() * (persenDiskon / 100);
+        return nominalDiskon;
     }
 
     // hitung pajak
     private int hitungNominalPajak() {
-        return hitungSubtotal() * (persenPajak / 100);
+        nominalPajak = hitungSubtotal() * (persenPajak / 100);
+        return nominalPajak;
     }
 
-    // hitung total akhir
-    private int hitungTotalAkhir() {
+    // buat transaksi dan hitung total akhir
+    private int buatTransaksi() {
         totalAkhir = hitungSubtotal() - hitungNominalDiskon() + hitungNominalPajak();
         return totalAkhir;
     }
@@ -51,11 +55,9 @@ public class Transaksi {
         for (Barang barang : listBarang) {
             System.out.println("- " + barang.namaBarang + " @ " + barang.hargaBarangPerSatuan);
         }
-        System.out.println("\nSubtotal: " + hitungSubtotal());
-        System.out.println("Diskon (" + persenDiskon + "%): " + hitungNominalDiskon());
-        System.out.println("Pajak (" + persenPajak + "%): " + hitungNominalPajak());
-        System.out.println("Total Akhir: " + hitungTotalAkhir());
+        System.out.println("\nSubtotal: " + subTotal);
+        System.out.println("Diskon (" + persenDiskon + "%): " + nominalDiskon);
+        System.out.println("Pajak (" + persenPajak + "%): " + nominalPajak);
+        System.out.println("Total Akhir: " + totalAkhir);
     }
-
-
 }

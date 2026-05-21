@@ -18,6 +18,7 @@ public class Barang {
             System.out.println("Harga Barang Per-Box: " + hargaBarangPerBox);
             System.out.println("Total Stok Barang: " + totalStokBarang);
         }
+
         public void editBarang(int stok, int hargaPerBox, int hargaPerSatuan){
             Barang.totalStokBarang -= this.stokBarang;
             this.stokBarang = stok;
