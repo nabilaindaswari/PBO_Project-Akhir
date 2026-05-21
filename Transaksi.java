@@ -3,14 +3,27 @@ import java.util.ArrayList;
 
 public class Transaksi {
     int idTransaksi;
-    static double persenDiskon;
-    static double persenPajak;
+    static double persenDiskon = 7;
+    static double persenPajak = 10;
     LocalDateTime tanggalTransaksi;
-    double subTotal = 0;
+    double subTotal;
     ArrayList<Barang> listBarang = new ArrayList<>();
     double totalAkhir;
     double nominalDiskon;
     double nominalPajak;
+
+    public Transaksi(int idTransaksi, LocalDateTime tanggalTransaksi) { // constructor 1
+        this.idTransaksi = idTransaksi;
+        this.tanggalTransaksi = tanggalTransaksi;
+    
+    }
+
+    public Transaksi(int idTransaksi, int persenDiskon, int persenPajak, LocalDateTime tanggalTransaksi) { // constructor 2
+        this.idTransaksi = idTransaksi;
+        this.persenDiskon = persenDiskon;
+        this.persenPajak = persenPajak;
+        this.tanggalTransaksi = tanggalTransaksi;
+    }
 
     // tambah barang
     public Barang tambahBarang(Barang... barangBaru) {
@@ -30,21 +43,18 @@ public class Transaksi {
     }
 //
     // hitung diskon
-    private int hitungNominalDiskon() {
+    private void hitungNominalDiskon() {
         nominalDiskon = hitungSubtotal() * (persenDiskon / 100);
-        return nominalDiskon;
     }
 
     // hitung pajak
-    private int hitungNominalPajak() {
+    private void hitungNominalPajak() {
         nominalPajak = hitungSubtotal() * (persenPajak / 100);
-        return nominalPajak;
     }
 
     // buat transaksi dan hitung total akhir
-    private int buatTransaksi() {
+    public void buatTransaksi() {
         totalAkhir = hitungSubtotal() - hitungNominalDiskon() + hitungNominalPajak();
-        return totalAkhir;
     }
 
     // tampilkan transaksi
