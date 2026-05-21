@@ -10,7 +10,7 @@ public class SistemInventaris {
 
 class SistemInventarisBarang extends SistemInventaris {
 
-    List<List<Barang>> inventarisBarang = new ArrayList<>(); 
+    static List<List<Barang>> inventarisBarang = new ArrayList<>(); 
 
     @Override
     public void tampilkan() {
@@ -38,7 +38,7 @@ class SistemInventarisBarang extends SistemInventaris {
 }
 
 class SistemInventarisHistoryTransaksi extends SistemInventaris {
-    List<Transaksi> inventarisTransaksi = new ArrayList<>(); 
+    static List<Transaksi> inventarisTransaksi = new ArrayList<>(); 
     
     @Override
     public void tampilkan() {
