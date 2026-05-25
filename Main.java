@@ -180,8 +180,12 @@ public class Main {
                     System.out.println(
                     "5. Edit Barang"
             );
+                    System.out.println(
+                    "6. Manajemen"
+            );
+
             System.out.println(
-                    "6. Logout"
+                    "7. Logout"
             );
             System.out.print("Pilih Menu: ");
             menu = input.nextInt();
@@ -207,8 +211,12 @@ public class Main {
                 case 5:
                     editBarang();
                     break;
-
+                
                 case 6:
+                    infoManajemen();
+                    break;
+
+                case 7:
                     System.out.println(
                             "Logout berhasil"
                     );
@@ -220,6 +228,14 @@ public class Main {
                     );
             }
         } while (menu != 5);
+    }
+
+    public static void infoManajemen(){
+        System.out.println("Total stok barang    : " + Barang.totalStokBarang);
+        System.out.println("Total stok kertas    : " + Kertas.totalStokKertas);
+        System.out.println("Total stok alat tulis    : "+ AlatTulis.totalStokAlatTulis);
+        System.out.println("Total stok alat kantor    : "+ AlatKantor.totalStokAlatKantor);
+        System.out.println("Total stok buku    : "+ Buku.totalStokBuku);
     }
 
     public static void tambahTransaksi() {
@@ -255,6 +271,12 @@ public class Main {
                             barangDipilih
                     );
                     barangDipilih.stokBarang--;
+                    Barang.totalStokBarang--;
+                        if (barangDipilih instanceof Kertas) Kertas.totalStokKertas--;
+                        else if (barangDipilih instanceof AlatTulis) AlatTulis.totalStokAlatTulis--;
+                        else if (barangDipilih instanceof AlatKantor) AlatKantor.totalStokAlatKantor--;
+                        else if (barangDipilih instanceof Buku) Buku.totalStokBuku--;
+                        
                     System.out.println(
                             "Barang berhasil ditambahkan"
                     );

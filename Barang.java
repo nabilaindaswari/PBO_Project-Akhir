@@ -8,7 +8,7 @@ abstract public class Barang {
         int hargaBarangPerBox;
         String kategori;
         int kolom; //gak usah dimasukkin ke konstruktor
-        static int totalStokBarang;
+        public static int totalStokBarang = 0;
         
         public void tampilkanBarang(){
             System.out.println("----------- Barang ------------");
@@ -40,7 +40,7 @@ class Kertas extends Barang {
     String jenisKertas;
     String merkKertas;
     String ukuranKertas;
-    static int totalStokKertas;
+    public static int totalStokKertas = 0;
 
     //constructor 1
         public Kertas(String idBarang, String namaBarang, int stokBarang, int hargaBarangPerSatuan, int hargaBarangPerBox, String Kategori, String jenisKertas, String merkKertas, String ukuranKertas) {
@@ -54,6 +54,9 @@ class Kertas extends Barang {
             this.jenisKertas = jenisKertas;
             this.merkKertas = merkKertas;
             this.ukuranKertas = ukuranKertas;
+            Kertas.totalStokKertas += stokBarang;
+            Barang.totalStokBarang +=stokBarang;
+
             SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
         }
 
@@ -71,6 +74,8 @@ class Kertas extends Barang {
             this.merkKertas = merkKertas;
             this.ukuranKertas = ukuranKertas;
             SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
+            Kertas.totalStokKertas += stokBarang;
+            Barang.totalStokBarang +=stokBarang;
         }
 
     @Override
@@ -90,7 +95,7 @@ class AlatTulis extends Barang {
     String jenisAlatTulis;
     String merkAlatTulis;
     String warnaAlatTulis;
-    static int totalStokAlatTulis;
+    public static int totalStokAlatTulis;
 
     //constructor 1
         public AlatTulis(String idBarang, String namaBarang, int stokBarang, int hargaBarangPerSatuan, int hargaBarangPerBox, String Kategori, String jenisAlatTulis, String merkAlatTulis) {
@@ -104,6 +109,8 @@ class AlatTulis extends Barang {
             this.jenisAlatTulis = jenisAlatTulis;
             this.merkAlatTulis = merkAlatTulis;
             SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
+            AlatTulis.totalStokAlatTulis += stokBarang;
+            Barang.totalStokBarang +=stokBarang;
         }
 
     //constructor 2
@@ -120,6 +127,9 @@ class AlatTulis extends Barang {
             this.merkAlatTulis = merkAlatTulis;
             this.warnaAlatTulis = warnaAlatTulis;
             SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
+            AlatTulis.totalStokAlatTulis += stokBarang;
+            Barang.totalStokBarang +=stokBarang;
+        
         }
 
     @Override
@@ -138,7 +148,7 @@ class AlatKantor extends Barang {
     String merkAlatKantor;
     String bahan;
     String warnaAlatKantor;
-    static int totalStokAlatKantor;
+    public static int totalStokAlatKantor;
 
     //constructor 1
         public AlatKantor(String idBarang, String namaBarang, int stokBarang, int hargaBarangPerSatuan, int hargaBarangPerBox, String Kategori, String jenisAlatKantor, String merkAlatKantor) {
@@ -152,6 +162,9 @@ class AlatKantor extends Barang {
             this.jenisAlatKantor = jenisAlatKantor;
             this.merkAlatKantor = merkAlatKantor;
             SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
+            AlatKantor.totalStokAlatKantor += stokBarang;
+            Barang.totalStokBarang +=stokBarang;
+        
         }
 
     //constructor 2
@@ -169,6 +182,9 @@ class AlatKantor extends Barang {
             this.bahan = bahan;
             this.warnaAlatKantor = warnaAlatKantor;
             SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
+             AlatKantor.totalStokAlatKantor += stokBarang;
+            Barang.totalStokBarang +=stokBarang;
+        
         }
 
     @Override
@@ -187,7 +203,7 @@ class Buku extends Barang {
     String jenisBuku;
     String merkBuku;
     int lembarBuku;
-    static int totalStokBuku;
+    public static int totalStokBuku;
 
     //constructor 1
         public Buku(String idBarang, String namaBarang, int stokBarang, int hargaBarangPerSatuan, int hargaBarangPerBox, String Kategori, String jenisBuku, String merkBuku) {
@@ -201,6 +217,9 @@ class Buku extends Barang {
             this.jenisBuku = jenisBuku;
             this.merkBuku = merkBuku;
             SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
+            Buku.totalStokBuku += stokBarang;
+            Barang.totalStokBarang +=stokBarang;
+        
         }
 
     //constructor 2
@@ -217,6 +236,9 @@ class Buku extends Barang {
             this.merkBuku = merkBuku;
             this.lembarBuku = lembarBuku;
             SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
+            Buku.totalStokBuku += stokBarang;
+            Barang.totalStokBarang +=stokBarang;
+        
         }
 
     @Override
