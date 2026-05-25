@@ -51,6 +51,16 @@ public class Main {
             int hargaBox = input.nextInt();
             input.nextLine();
 
+            System.out.print("Apakah ingin menambahkan detail barang? (ya/tidak): ");
+            String opsiDetail = input.nextLine();
+
+            
+            String detailBarang = "";
+            if (opsiDetail.equalsIgnoreCase("ya")) {
+                System.out.print("Masukkan detail barang: ");
+                detailBarang = input.nextLine();
+            }
+
             switch (pilih) {
                 case 1:
                     System.out.print("Jenis Kertas: ");
@@ -65,17 +75,13 @@ public class Main {
                     String ukuran =
                             input.nextLine();
 
-                    new Kertas(
-                            id,
-                            nama,
-                            stok,
-                            hargaSatuan,
-                            hargaBox,
-                            "Kertas",
-                            jenisKertas,
-                            merkKertas,
-                            ukuran
-                    );
+                    if (opsiDetail.equalsIgnoreCase("ya")) {
+                        // Memanggil Constructor 2 (ada parameter detailBarang)
+                        new Kertas(id, nama, stok, hargaSatuan, hargaBox, "Kertas", detailBarang, jenisKertas, merkKertas, ukuran);
+                    } else {
+                        // Memanggil Constructor 1 (tanpa parameter detailBarang)
+                        new Kertas(id, nama, stok, hargaSatuan, hargaBox, "Kertas", jenisKertas, merkKertas, ukuran);
+                    }
                     break;
 
                 case 2:
@@ -90,7 +96,22 @@ public class Main {
                     String merkAT =
                             input.nextLine();
 
-                    new AlatTulis(
+                    if (opsiDetail.equalsIgnoreCase("ya")) {
+                        // Memanggil Constructor 2 (ada parameter detailBarang)
+                        new AlatTulis(
+                            id,
+                            nama,
+                            stok,
+                            hargaSatuan,
+                            hargaBox,
+                            "AlatTulis",
+                            detailBarang,
+                            jenisAT,
+                            merkAT
+                    );
+                    } else {
+                        // Memanggil Constructor 1 (tanpa parameter detailBarang)
+                        new AlatTulis(
                             id,
                             nama,
                             stok,
@@ -100,6 +121,7 @@ public class Main {
                             jenisAT,
                             merkAT
                     );
+                    }
                     break;
 
                 case 3:
@@ -113,8 +135,38 @@ public class Main {
                     );
                     String merkAK =
                             input.nextLine();
+                    
+                    if (opsiDetail.equalsIgnoreCase("ya")) {
+                        // Memanggil Constructor 2 (ada parameter detailBarang)
+                        
+                        System.out.print(
+                            "Bahan : "
+                        );
+                        String bahan =
+                            input.nextLine();
+                        
+                        System.out.print(
+                            "Warna Alat Kantor: "
+                        );
+                        String warnaAK =
+                            input.nextLine();
 
-                    new AlatKantor(
+                        new AlatKantor(
+                            id,
+                            nama,
+                            stok,
+                            hargaSatuan,
+                            hargaBox,
+                            "AlatKantor",
+                            detailBarang,
+                            jenisAK,
+                            merkAK,
+                            bahan,
+                            warnaAK
+                    );
+                    } else {
+                        // Memanggil Constructor 1 (tanpa parameter detailBarang)
+                        new AlatKantor(
                             id,
                             nama,
                             stok,
@@ -124,6 +176,7 @@ public class Main {
                             jenisAK,
                             merkAK
                     );
+                    }
                     break;
 
                 case 4:
@@ -133,8 +186,28 @@ public class Main {
                     System.out.print("Merk Buku: ");
                     String merkBuku =
                             input.nextLine();
+                            
 
-                    new Buku(
+                    if (opsiDetail.equalsIgnoreCase("ya")) {
+                    System.out.print("Lembar buku : ");
+                    int lembarBuku = input.nextInt();
+                            
+                        // Memanggil Constructor 2 (ada parameter detailBarang)
+                        new Buku(
+                            id,
+                            nama,
+                            stok,
+                            hargaSatuan,
+                            hargaBox,
+                            "Buku",
+                            detailBarang,
+                            jenisBuku,
+                            merkBuku,
+                            lembarBuku
+                        );
+                    } else {
+                        // Memanggil Constructor 1 (tanpa parameter detailBarang) 
+                        new Buku(
                             id,
                             nama,
                             stok,
@@ -143,7 +216,8 @@ public class Main {
                             "Buku",
                             jenisBuku,
                             merkBuku
-                    );
+                        );
+                    }
                     break;
 
                 default:
@@ -276,7 +350,7 @@ public class Main {
                         else if (barangDipilih instanceof AlatTulis) AlatTulis.totalStokAlatTulis--;
                         else if (barangDipilih instanceof AlatKantor) AlatKantor.totalStokAlatKantor--;
                         else if (barangDipilih instanceof Buku) Buku.totalStokBuku--;
-                        
+
                     System.out.println(
                             "Barang berhasil ditambahkan"
                     );

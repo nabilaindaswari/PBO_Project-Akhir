@@ -94,7 +94,6 @@ class Kertas extends Barang {
 class AlatTulis extends Barang {
     String jenisAlatTulis;
     String merkAlatTulis;
-    String warnaAlatTulis;
     public static int totalStokAlatTulis;
 
     //constructor 1
@@ -114,7 +113,7 @@ class AlatTulis extends Barang {
         }
 
     //constructor 2
-        public AlatTulis(String idBarang, String namaBarang, int stokBarang, int hargaBarangPerSatuan, int hargaBarangPerBox, String Kategori, String detailBarang, String jenisAlatTulis, String merkAlatTulis, String warnaAlatTulis) {
+        public AlatTulis(String idBarang, String namaBarang, int stokBarang, int hargaBarangPerSatuan, int hargaBarangPerBox, String Kategori, String detailBarang, String jenisAlatTulis, String merkAlatTulis) {
             this.idBarang = idBarang;
             this.namaBarang = namaBarang;
             this.stokBarang = stokBarang;
@@ -125,7 +124,6 @@ class AlatTulis extends Barang {
             this.kolom = SistemInventarisBarang.cekKolomTerakhir(Kategori);
             this.jenisAlatTulis = jenisAlatTulis;
             this.merkAlatTulis = merkAlatTulis;
-            this.warnaAlatTulis = warnaAlatTulis;
             SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
             AlatTulis.totalStokAlatTulis += stokBarang;
             Barang.totalStokBarang +=stokBarang;
@@ -138,7 +136,6 @@ class AlatTulis extends Barang {
                 
     System.out.println("Jenis Alat Tulis: " + jenisAlatTulis);
     System.out.println("Merk Alat Tulis: " + merkAlatTulis);
-    System.out.println("Warna Alat Tulis: " + warnaAlatTulis);
     System.out.println("Total Keseluruhan Alat Tulis: " + totalStokAlatTulis);
     System.out.println();
     }
