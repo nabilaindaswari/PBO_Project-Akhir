@@ -10,13 +10,7 @@ abstract public class SistemInventaris {
 
 class SistemInventarisBarang extends SistemInventaris {
 
-    static List<List<Barang>> inventarisBarang = new ArrayList<>(); 
-    static Map<String, Integer> kategori = new HashMap<>() {{
-        put("Kertas", 0);
-        put("AlatTulis", 1);
-        put("AlatKantor", 2);
-        put("Buku", 3);
-    }};
+    Map<String, List<Barang>> inventaris = new HashMap<>();
 
     static public int cekKolomTerakhir(String baris){
         if (!kategori.containsKey(baris)) {
