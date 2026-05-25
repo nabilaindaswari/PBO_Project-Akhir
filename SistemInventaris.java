@@ -3,11 +3,9 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SistemInventaris {
+abstract public class SistemInventaris {
     
-    public void tampilkan() {
-        System.out.println("Anda sedang mengakses sistem inventaris : ");
-    }
+    public abstract void tampilkan();
 }
 
 class SistemInventarisBarang extends SistemInventaris {
@@ -77,7 +75,7 @@ class SistemInventarisHistoryTransaksi extends SistemInventaris {
         for(Transaksi isi : inventarisTransaksi) {
             System.out.println("ID Transaksi: " + isi.idTransaksi + 
                                " | Persen Diskon: " + isi.persenDiskon + 
-                               " | Persen Pajak: " + isi.persenPajak + 
+                               " | Persen Pajak: " + Transaksi.persenPajak + 
                                " | Tanggal Transaksi: " + isi.tanggalTransaksi + 
                                " | subTotal: " + isi.subTotal + 
                                " | Total Akhir: " + isi.totalAkhir);
