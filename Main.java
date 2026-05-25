@@ -7,15 +7,10 @@ public class Main {
 
     static Scanner input = new Scanner(System.in);
 
-    static SistemInventarisBarang inventarisBarang = new SistemInventarisBarang();
-
-    static SistemInventarisHistoryTransaksi historyTransaksi = new SistemInventarisHistoryTransaksi();
+    public static SistemInventarisBarang inventarisBarang = new SistemInventarisBarang();
+    static SistemInventarisTransaksi historyTransaksi = new SistemInventarisTransaksi();
 
     public static void main(String[] args) {
-        for (int i = 0; i < 4; i++) {
-            SistemInventarisBarang.inventarisBarang.add(new ArrayList<>());
-        }
-
         inputBarang();
         menuUtama();
     }
@@ -336,9 +331,7 @@ public class Main {
             );
 
             String idCari = input.nextLine();
-            Barang barangDipilih =
-                    cariBarang(idCari);
-
+            Barang barangDipilih = inventarisBarang.cariBarang(idCari);
             if (barangDipilih != null) {
                 if (barangDipilih.stokBarang > 0) {
                     transaksi.tambahBarang(
@@ -383,8 +376,7 @@ public class Main {
         );
 
         String idCari = input.nextLine();
-        Barang barangEdit =
-                cariBarang(idCari);
+        Barang barangEdit = inventarisBarang.cariBarang(idCari);
 
         if (barangEdit != null) {
             System.out.print(
@@ -417,14 +409,5 @@ public class Main {
         }
     }
 
-    public static Barang cariBarang(String idCari) {
-        for (List<Barang> baris :SistemInventarisBarang.inventarisBarang) {
-            for (Barang barang : baris) {
-                if (barang.idBarang.equalsIgnoreCase(idCari)) {
-                    return barang;
-                }
-            }
-        }
-        return null;
-    }
+
 }

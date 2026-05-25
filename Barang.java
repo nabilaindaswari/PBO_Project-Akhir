@@ -7,9 +7,9 @@ abstract public class Barang {
         int hargaBarangPerSatuan;
         int hargaBarangPerBox;
         String kategori;
-        int kolom; //gak usah dimasukkin ke konstruktor
         public static int totalStokBarang = 0;
         
+
         public void tampilkanBarang(){
             System.out.println("----------- Barang ------------");
             System.out.println("ID Barang: " + idBarang);
@@ -21,15 +21,15 @@ abstract public class Barang {
             System.out.println("Total Stok Barang: " + totalStokBarang);
         }
 
-        public void editBarang(int stok, int hargaPerBox, int hargaPerSatuan){
+        public void editBarang(int stokBaru, int hargaPerBox, int hargaPerSatuan){
+            // Update static counter
             Barang.totalStokBarang -= this.stokBarang;
-            this.stokBarang = stok;
-            Barang.totalStokBarang += stok;
+            this.stokBarang = stokBaru;
+            Barang.totalStokBarang += stokBaru;
 
+            // Update harga
             this.hargaBarangPerBox = hargaPerBox;
             this.hargaBarangPerSatuan = hargaPerSatuan;
-
-            SistemInventarisBarang.editBarang(this);
         }
 }
 
@@ -50,14 +50,13 @@ class Kertas extends Barang {
             this.hargaBarangPerSatuan = hargaBarangPerSatuan;
             this.hargaBarangPerBox = hargaBarangPerBox;
             this.kategori = Kategori;
-            this.kolom = SistemInventarisBarang.cekKolomTerakhir(Kategori);
             this.jenisKertas = jenisKertas;
             this.merkKertas = merkKertas;
             this.ukuranKertas = ukuranKertas;
             Kertas.totalStokKertas += stokBarang;
             Barang.totalStokBarang +=stokBarang;
 
-            SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
+            Main.inventarisBarang.masukkanBarang(this);
         }
 
     //constructor 2
@@ -69,11 +68,10 @@ class Kertas extends Barang {
             this.hargaBarangPerBox = hargaBarangPerBox;
             this.kategori = Kategori;
             this.detailBarang = detailBarang;
-            this.kolom = SistemInventarisBarang.cekKolomTerakhir(Kategori);
             this.jenisKertas = jenisKertas;
             this.merkKertas = merkKertas;
             this.ukuranKertas = ukuranKertas;
-            SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
+            Main.inventarisBarang.masukkanBarang(this);
             Kertas.totalStokKertas += stokBarang;
             Barang.totalStokBarang +=stokBarang;
         }
@@ -104,10 +102,9 @@ class AlatTulis extends Barang {
             this.hargaBarangPerSatuan = hargaBarangPerSatuan;
             this.hargaBarangPerBox = hargaBarangPerBox;
             this.kategori = Kategori;
-            this.kolom = SistemInventarisBarang.cekKolomTerakhir(Kategori);
+            Main.inventarisBarang.masukkanBarang(this);
             this.jenisAlatTulis = jenisAlatTulis;
             this.merkAlatTulis = merkAlatTulis;
-            SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
             AlatTulis.totalStokAlatTulis += stokBarang;
             Barang.totalStokBarang +=stokBarang;
         }
@@ -121,10 +118,9 @@ class AlatTulis extends Barang {
             this.hargaBarangPerBox = hargaBarangPerBox;
             this.kategori = Kategori;
             this.detailBarang = detailBarang;
-            this.kolom = SistemInventarisBarang.cekKolomTerakhir(Kategori);
             this.jenisAlatTulis = jenisAlatTulis;
             this.merkAlatTulis = merkAlatTulis;
-            SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
+            Main.inventarisBarang.masukkanBarang(this);
             AlatTulis.totalStokAlatTulis += stokBarang;
             Barang.totalStokBarang +=stokBarang;
         
@@ -155,10 +151,9 @@ class AlatKantor extends Barang {
             this.hargaBarangPerSatuan = hargaBarangPerSatuan;
             this.hargaBarangPerBox = hargaBarangPerBox;
             this.kategori = Kategori;
-            this.kolom = SistemInventarisBarang.cekKolomTerakhir(Kategori);
             this.jenisAlatKantor = jenisAlatKantor;
             this.merkAlatKantor = merkAlatKantor;
-            SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
+            Main.inventarisBarang.masukkanBarang(this);
             AlatKantor.totalStokAlatKantor += stokBarang;
             Barang.totalStokBarang +=stokBarang;
         
@@ -173,13 +168,12 @@ class AlatKantor extends Barang {
             this.hargaBarangPerBox = hargaBarangPerBox;
             this.kategori = Kategori;
             this.detailBarang = detailBarang;
-            this.kolom = SistemInventarisBarang.cekKolomTerakhir(Kategori);
             this.jenisAlatKantor = jenisAlatKantor;
             this.merkAlatKantor = merkAlatKantor;
             this.bahan = bahan;
             this.warnaAlatKantor = warnaAlatKantor;
-            SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
-             AlatKantor.totalStokAlatKantor += stokBarang;
+            Main.inventarisBarang.masukkanBarang(this);
+            AlatKantor.totalStokAlatKantor += stokBarang;
             Barang.totalStokBarang +=stokBarang;
         
         }
@@ -210,10 +204,9 @@ class Buku extends Barang {
             this.hargaBarangPerSatuan = hargaBarangPerSatuan;
             this.hargaBarangPerBox = hargaBarangPerBox;
             this.kategori = Kategori;
-            this.kolom = SistemInventarisBarang.cekKolomTerakhir(Kategori);
             this.jenisBuku = jenisBuku;
             this.merkBuku = merkBuku;
-            SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
+            Main.inventarisBarang.masukkanBarang(this);
             Buku.totalStokBuku += stokBarang;
             Barang.totalStokBarang +=stokBarang;
         
@@ -228,11 +221,10 @@ class Buku extends Barang {
             this.hargaBarangPerBox = hargaBarangPerBox;
             this.kategori = Kategori;
             this.detailBarang = detailBarang;
-            this.kolom = SistemInventarisBarang.cekKolomTerakhir(Kategori);
             this.jenisBuku = jenisBuku;
             this.merkBuku = merkBuku;
             this.lembarBuku = lembarBuku;
-            SistemInventarisBarang.masukkanBarang(this, this.kategori, this.kolom);
+            Main.inventarisBarang.masukkanBarang(this);
             Buku.totalStokBuku += stokBarang;
             Barang.totalStokBarang +=stokBarang;
         
