@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.time.LocalDateTime;
 
 public class Main {
 
@@ -228,10 +229,7 @@ public class Main {
         input.nextLine();
 
         Transaksi transaksi =
-                new Transaksi(
-                        idTransaksi,
-                        diskon,
-                        LocalDateTime.now()
+                new Transaksi(idTransaksi,diskon,LocalDateTime.now()
                 );
         String lanjut;
 
