@@ -16,11 +16,11 @@ public class Main {
             SistemInventarisBarang.inventarisBarang.add(new ArrayList<>());
         }
 
-        inputBarangAwal();
+        inputBarang();
         menuUtama();
     }
 
-    public static void inputBarangAwal() {
+    public static void inputBarang() {
         String lanjut;
         do {
             System.out.println(
@@ -169,16 +169,19 @@ public class Main {
                     "1. Lihat Inventaris"
             );
             System.out.println(
-                    "2. Tambah Transaksi"
+                    "2. Tambah Barang"
             );
             System.out.println(
-                    "3. Lihat History"
+                    "3. Tambah Transaksi"
             );
             System.out.println(
-                    "4. Edit Barang"
+                    "4. Lihat History"
+            );
+                    System.out.println(
+                    "5. Edit Barang"
             );
             System.out.println(
-                    "5. Logout"
+                    "6. Logout"
             );
             System.out.print("Pilih Menu: ");
             menu = input.nextInt();
@@ -188,20 +191,24 @@ public class Main {
                 case 1:
                     inventarisBarang.tampilkan();
                     break;
-
+                    
                 case 2:
-                    tambahTransaksi();
+                    inputBarang();
                     break;
 
                 case 3:
-                    historyTransaksi.tampilkan();
+                    tambahTransaksi();
                     break;
 
                 case 4:
-                    editBarang();
+                    historyTransaksi.tampilkan();
                     break;
 
                 case 5:
+                    editBarang();
+                    break;
+
+                case 6:
                     System.out.println(
                             "Logout berhasil"
                     );
