@@ -55,13 +55,6 @@ class SistemInventarisBarang extends SistemInventaris {
             }
         }
     }
-    
-    public void tambahkan(Barang barang, int indexBaris) {
-        while (inventarisBarang.size() <= indexBaris) {
-            inventarisBarang.add(new ArrayList<>());
-        }
-        inventarisBarang.get(indexBaris).add(barang); 
-    }
 }
 
 class SistemInventarisHistoryTransaksi extends SistemInventaris {
