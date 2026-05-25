@@ -1,5 +1,15 @@
-//parent class
+/*
+sebagai parent class atau induk
+tidak dapat dibuat objeknya secara langsung dan berfungsi sebagai kerangka dasar
+dan wajib di-override oleh subclass (class turunan)
+kelas barang punya 4 turunan, yaitu
+1. kertas
+2. alat tulis
+3. alat kantor
+4. buku
+*/
 abstract public class Barang {
+
         String idBarang;
         String namaBarang;
         String detailBarang;
@@ -33,8 +43,12 @@ abstract public class Barang {
         }
 }
 
-//child class
+/*
+sebagai child class atau kelas turunan dari kelas induk (barang)
+mewarisi properti dan metode dari kelas induk (barang)
+*/
 class Kertas extends Barang {
+
     int lembar;
     int ketebalanKertas;
     String jenisKertas;
@@ -76,9 +90,12 @@ class Kertas extends Barang {
             Barang.totalStokBarang +=stokBarang;
         }
 
+        // menggunakan override, yang memungkinkan kelas turunan untuk menulis ulang atau 
+        // memberikan implementasi spesifik dari sebuah metode yang sudah diwarisi dari kelas induknya(barang)
     @Override
     public void tampilkanBarang(){
     super.tampilkanBarang();
+    //memanggil method tampilkanBarang default (milik induk)
                 
     System.out.println("Lembar Kertas: " + lembar);
     System.out.println("Jenis Kertas: " + jenisKertas);
@@ -89,6 +106,11 @@ class Kertas extends Barang {
     System.out.println();
     }
 }
+
+/*
+sebagai child class atau kelas turunan dari kelas induk (barang)
+mewarisi properti dan metode dari kelas induk (barang)
+*/
 class AlatTulis extends Barang {
     String jenisAlatTulis;
     String merkAlatTulis;
@@ -126,9 +148,12 @@ class AlatTulis extends Barang {
         
         }
 
+        // menggunakan override, yang memungkinkan kelas turunan untuk menulis ulang atau 
+        // memberikan implementasi spesifik dari sebuah metode yang sudah diwarisi dari kelas induknya(barang)
     @Override
     public void tampilkanBarang(){
     super.tampilkanBarang();
+    //memanggil method tampilkanBarang default (milik induk)
                 
     System.out.println("Jenis Alat Tulis: " + jenisAlatTulis);
     System.out.println("Merk Alat Tulis: " + merkAlatTulis);
@@ -136,6 +161,11 @@ class AlatTulis extends Barang {
     System.out.println();
     }
 }
+
+/*
+sebagai child class atau kelas turunan dari kelas induk (barang)
+mewarisi properti dan metode dari kelas induk (barang)
+*/
 class AlatKantor extends Barang {
     String jenisAlatKantor;
     String merkAlatKantor;
@@ -178,10 +208,12 @@ class AlatKantor extends Barang {
         
         }
 
+         // menggunakan override, yang memungkinkan kelas turunan untuk menulis ulang atau 
+        // memberikan implementasi spesifik dari sebuah metode yang sudah diwarisi dari kelas induknya(barang)
     @Override
     public void tampilkanBarang(){
     super.tampilkanBarang();
-                
+    //memanggil method tampilkanBarang default (milik induk)
     System.out.println("Jenis Alat Kantor: " + jenisAlatKantor);
     System.out.println("Merk Alat Kantor: " + merkAlatKantor);
     System.out.println("Bahan Alat Kantor: " + bahan);
@@ -190,6 +222,12 @@ class AlatKantor extends Barang {
     System.out.println();
     }
 }
+
+/*
+sebagai child class atau kelas turunan dari kelas induk (barang)
+mewarisi properti dan metode dari kelas induk (barang)
+*/
+
 class Buku extends Barang {
     String jenisBuku;
     String merkBuku;
@@ -229,11 +267,12 @@ class Buku extends Barang {
             Barang.totalStokBarang +=stokBarang;
         
         }
-
+        // menggunakan override, yang memungkinkan kelas turunan untuk menulis ulang atau 
+        // memberikan implementasi spesifik dari sebuah metode yang sudah diwarisi dari kelas induknya(barang)
     @Override
     public void tampilkanBarang(){
     super.tampilkanBarang();
-                
+    //memanggil method tampilkanBarang default (milik induk)        
     System.out.println("Jenis Buku: " + jenisBuku);
     System.out.println("Merk Buku: " + merkBuku);
     System.out.println("Jumlah Lembar Buku: " + lembarBuku);
