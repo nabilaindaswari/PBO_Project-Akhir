@@ -1,16 +1,15 @@
 import java.util.Scanner;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
     static Scanner input = new Scanner(System.in);
 
-    static SistemInventarisBarang inventarisBarang =
-            new SistemInventarisBarang();
+    static SistemInventarisBarang inventarisBarang = new SistemInventarisBarang();
 
-    static SistemInventarisHistoryTransaksi
-            historyTransaksi =
-            new SistemInventarisHistoryTransaksi();
+    static SistemInventarisHistoryTransaksi historyTransaksi = new SistemInventarisHistoryTransaksi();
 
     public static void main(String[] args) {
         for (int i = 0; i < 4; i++) {
@@ -316,9 +315,7 @@ public class Main {
     }
 
     public static Barang cariBarang(String idCari) {
-        for (List<Barang> baris :
-                SistemInventarisBarang
-                        .inventarisBarang) {
+        for (List<Barang> baris :SistemInventarisBarang.inventarisBarang) {
             for (Barang barang : baris) {
                 if (barang.idBarang.equalsIgnoreCase(idCari)) {
                     return barang;
