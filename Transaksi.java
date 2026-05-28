@@ -1,16 +1,20 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class Transaksi {
-    int idTransaksi;
-    double persenDiskon;
-    static double persenPajak = 10;
-    LocalDateTime tanggalTransaksi;
-    double subTotal;
-    ArrayList<Barang> listBarang = new ArrayList<>();
-    double totalAkhir;
-    double nominalDiskon;
-    double nominalPajak;
+    private int idTransaksi;
+    private double persenDiskon;
+    private static double persenPajak = 10;
+    private LocalDateTime tanggalTransaksi;
+    private double subTotal;
+    private double totalAkhir;
+    private double nominalDiskon;
+    private double nominalPajak;
+
+    //menggunakan Map untuk melacak barang beserta jumlah (quantity) belinya
+    private Map<Barang, Integer> itemBeli = new LinkedHashMap<>();
 
     public Transaksi(int idTransaksi, LocalDateTime tanggalTransaksi) { // constructor 1
         this.idTransaksi = idTransaksi;
@@ -24,20 +28,29 @@ public class Transaksi {
         this.tanggalTransaksi = tanggalTransaksi;
     }
 
+    //getter
+    public int getIdTransaksi() { return idTransaksi; }
+    public LocalDateTime getTanggalTransaksi() { return tanggalTransaksi; }
+    public double getSubTotal() { return subTotal; }
+    public double getPersenDiskon() { return persenDiskon; }
+    public static double getPersenPajak() { return persenPajak; }
+    public double getTotalAkhir() { return totalAkhir; }
+    public double getNominalDiskon() { return nominalDiskon; }
+    public double getNominalPajak() { return nominalPajak; }
+
     // tambah barang
-    public void tambahBarang(Barang... barangBaru) {
-        for (Barang barang : barangBaru) {
-            listBarang.add(barang);
-        }
+    public void tambahBarang(Barang barangBaru, int jumlah) {
+        itemBeli.put(barangBaru, itemBeli.getOrDefault(barangBaru, 0) + jumlah);
     }
+
     // hitung subtotal
     private void hitungSubtotal() {
         subTotal = 0;
-        for (Barang barang : listBarang) {
-            subTotal += barang.hargaBarangPerSatuan;
+        for (Map.Entry<Barang, Integer> item : itemBeli.entrySet()) {
+            subTotal += (item.getKey().getHargaBarangPerSatuan() * item.getValue());
         }
     }
-//
+
     // hitung diskon
     private void hitungNominalDiskon() {
         nominalDiskon = subTotal * (persenDiskon / 100);
@@ -58,16 +71,27 @@ public class Transaksi {
 
     // tampilkan transaksi
     public void tampilkanTransaksi() {
-        System.out.println("----------- Transaksi ------------");
-        System.out.println("ID Transaksi: " + idTransaksi);
-        System.out.println("Tanggal Transaksi: " + tanggalTransaksi);
-        System.out.println("\nDaftar Barang:");
-        for (Barang barang : listBarang) {
-            System.out.println("- " + barang.namaBarang + " @ " + barang.hargaBarangPerSatuan);
+        System.out.println("\n╔══════════════════════════════════╗");
+        System.out.println("║          STRUK PEMBELIAN         ║");
+        System.out.println("╚══════════════════════════════════╝");
+        System.out.println("ID Transaksi    : " + idTransaksi);
+        System.out.println("Tanggal         : " + tanggalTransaksi);
+        System.out.println("\nDaftar Item:");
+        System.out.println("----------------------------------");
+        for (Map.Entry<Barang, Integer> item : itemBeli.entrySet()) {
+            Barang b = item.getKey();
+            int qty = item.getValue();
+            double subItem = b.getHargaBarangPerSatuan() * qty;
+            System.out.printf("  %-18s x%-2d @ Rp%-7d = Rp%.0f\n", b.getNamaBarang(), qty, b.getHargaBarangPerSatuan(), subItem);
         }
-        System.out.println("Subtotal: Rp." + subTotal);
-        System.out.println("Diskon (" + persenDiskon + "%): Rp." + nominalDiskon);
-        System.out.println("Pajak (" + persenPajak + "%): Rp."+ nominalPajak);
-        System.out.println("Total Akhir: " + totalAkhir);
+        System.out.println("----------------------------------");
+        System.out.printf("  Subtotal        : Rp%.0f\n", subTotal);
+        System.out.printf("  Diskon  (%.0f%%)  : Rp%.0f\n", persenDiskon, nominalDiskon);
+        System.out.printf("  Pajak   (%.0f%%) : Rp%.0f\n", persenPajak, nominalPajak);
+        System.out.println("----------------------------------");
+        System.out.printf("  TOTAL BAYAR     : Rp%.0f\n", totalAkhir);
+        System.out.println("╔══════════════════════════════════╗");
+        System.out.println("║        Terima kasih!             ║");
+        System.out.println("╚══════════════════════════════════╝\n");
     }
 }
