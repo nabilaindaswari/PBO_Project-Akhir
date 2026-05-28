@@ -23,8 +23,8 @@ class SistemInventarisBarang extends SistemInventaris {
 
     // Method ini sekarang dinamis (tidak static), langsung menaruh barang ke rak yang tepat
     public void masukkanBarang(Barang barang) {
-        if (inventaris.containsKey(barang.kategori)) {
-            inventaris.get(barang.kategori).add(barang);
+        if (inventaris.containsKey(barang.getKategori())) {
+            inventaris.get(barang.getKategori()).add(barang);
         } else {
             System.out.println("Kategori tidak valid!");
         }
@@ -40,24 +40,25 @@ class SistemInventarisBarang extends SistemInventaris {
                 System.out.println("  (Rak kosong)");
             } else {
                 for (Barang isi : rak.getValue()) {
-                    System.out.println("  - ID: " + isi.idBarang + 
-                                       " | Nama: " + isi.namaBarang + 
-                                       " | Stok: " + isi.stokBarang + 
-                                       " | Hrg/Satuan: Rp" + isi.hargaBarangPerSatuan); 
+                    System.out.println("  - ID: " + isi.getIdBarang() + 
+                                       " | Nama: " + isi.getNamaBarang() + 
+                                       " | Stok: " + isi.getStokBarang() + 
+                                       " | Hrg/Satuan: Rp" + isi.getHargaBarangPerSatuan()); 
                 }
             }
         }
+        System.out.println("=====================================");
     }
     // Pindahkan method pencarian ini ke dalam SistemInventarisBarang
     public Barang cariBarang(String idCari) {
         for (List<Barang> rak : inventaris.values()) {
             for (Barang barang : rak) {
-                if (barang.idBarang.equalsIgnoreCase(idCari)) {
+                if (barang.getIdBarang().equalsIgnoreCase(idCari)) {
                     return barang;
                 }
             }
         }
-    return null;
+        return null;
     }
 }
 class SistemInventarisTransaksi extends SistemInventaris {
@@ -77,12 +78,12 @@ class SistemInventarisTransaksi extends SistemInventaris {
 
         // Cetak riwayat dengan format vertikal yang rapi
         for(Transaksi isi : inventarisTransaksi) {
-            System.out.println("\n[ ID Transaksi: " + isi.idTransaksi + " ]");
-            System.out.println("  Waktu      : " + isi.tanggalTransaksi);
-            System.out.println("  SubTotal   : Rp" + isi.subTotal);
-            System.out.println("  Diskon     : " + isi.persenDiskon + "%");
-            System.out.println("  Pajak      : " + Transaksi.persenPajak + "%");
-            System.out.println("  Total Akhir: Rp" + isi.totalAkhir);
+            System.out.println("\n[ ID Transaksi: " + isi.getIdTransaksi() + " ]");
+            System.out.println("  Waktu      : " + isi.getTanggalTransaksi());
+            System.out.println("  SubTotal   : Rp" + isi.getSubTotal());
+            System.out.println("  Diskon     : " + isi.getPersenDiskon() + "%");
+            System.out.println("  Pajak      : " + Transaksi.getPersenPajak() + "%");
+            System.out.println("  Total Akhir: Rp" + isi.getTotalAkhir());
             System.out.println("  -----------------------------------");
         }
     }
