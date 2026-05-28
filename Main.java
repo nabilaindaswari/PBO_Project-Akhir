@@ -5,7 +5,7 @@ public class Main {
 
     static Scanner input = new Scanner(System.in);
 
-    // menaruh kata static di objek pemanggilnya (di Main), objek ini jadi hanya diciptakan satu kali seumur hidup aplikasi.
+    //menaruh kata static di objek pemanggilnya (di Main), objek ini jadi hanya diciptakan satu kali seumur hidup aplikasi.
     public static SistemInventarisBarang inventarisBarang = new SistemInventarisBarang();
     static SistemInventarisTransaksi historyTransaksi = new SistemInventarisTransaksi();
 /*
@@ -14,15 +14,12 @@ java akan benar-benar membuat dua lemari fisik
 yang terpisah di dalam memori komputer. 
 mereka akan punya alamat memori yang berbeda.
 */
-
-
     public static void main(String[] args) {
         /*
         proses utama di main hanya ada dua, yaitu proses menginput barang dan proses menampilkan menu utama
         input barang pasti dilakukan di awal penggunaan sistem untuk menjaga setidaknya ada satu barang yang dapat dilakukan transaksi
         input barang di kemudian, juga dapat dilakukan dalam menuUtama
         */
-
         inputBarang();
         menuUtama();
     }
@@ -43,9 +40,7 @@ mereka akan punya alamat memori yang berbeda.
         do {
 
             //interface untuk memberikan opsi kepada user, kategori barang apa yang ingin dimasukkan
-            System.out.println(
-            "\n===== INPUT BARANG ====="
-            );
+            System.out.println("\n===== INPUT BARANG =====");
             System.out.println("1. Kertas");
             System.out.println("2. Alat Tulis");
             System.out.println("3. Alat Kantor");
@@ -77,12 +72,12 @@ mereka akan punya alamat memori yang berbeda.
             input.nextLine();
 
             //menanyakan user, apakah user ingin menambahkan detail barang (seperti deskripsi barang)
-            System.out.print("Apakah ingin menambahkan detail barang? (ya/tidak): ");
+            System.out.print("Apakah ingin menambahkan detail barang? (Ya/Tidak): ");
             String opsiDetail = input.nextLine();
 
             //kalo jawabannya iya, maka sistem akan meminta masukan tentang detail baraang
             String detailBarang = "";
-            if (opsiDetail.equalsIgnoreCase("ya")) {
+            if (opsiDetail.equalsIgnoreCase("Ya")) {
                 System.out.print("Masukkan detail barang: ");
                 detailBarang = input.nextLine();
             }
@@ -93,43 +88,53 @@ mereka akan punya alamat memori yang berbeda.
 
                     //ini adalah atribut milik class turunan
                     System.out.print("Jenis Kertas: ");
-                    String jenisKertas =
-                            input.nextLine();
+                    String jenisKertas = input.nextLine();
 
                     System.out.print("Merk Kertas: ");
-                    String merkKertas =
-                            input.nextLine();
+                    String merkKertas = input.nextLine();
 
                     System.out.print("Ukuran Kertas: ");
-                    String ukuran =
-                            input.nextLine();
+                    String ukuran = input.nextLine();
 
-                    if (opsiDetail.equalsIgnoreCase("ya")) {
+                    if (opsiDetail.equalsIgnoreCase("Ya")) {
                         // Memanggil Constructor 2 (ada parameter detailBarang)
-                        new Kertas(id, nama, stok, hargaSatuan, hargaBox, "Kertas", detailBarang, jenisKertas, merkKertas, ukuran);
+                        new Kertas(
+                            id,
+                            nama,
+                            stok,
+                            hargaSatuan,
+                            hargaBox,
+                            "Kertas",
+                            detailBarang,
+                            jenisKertas,
+                            merkKertas,
+                            ukuran);
                     } else {
                         // Memanggil Constructor 1 (tanpa parameter detailBarang)
-                        new Kertas(id, nama, stok, hargaSatuan, hargaBox, "Kertas", jenisKertas, merkKertas, ukuran);
+                        new Kertas(
+                            id,
+                            nama,
+                            stok,
+                            hargaSatuan,
+                            hargaBox,
+                            "Kertas",
+                            jenisKertas,
+                            merkKertas,
+                            ukuran);
                     }
                     break;
 
                 case 2:
-                    
                     //case ini terpilih jika value dari variable pilih adalah 2 atau 'Alat Tulis'
 
                     //ini adalah atribut milik class turunan
-                    System.out.print(
-                            "Jenis Alat Tulis: "
-                    );
-                    String jenisAT =
-                            input.nextLine();
-                    System.out.print(
-                            "Merk Alat Tulis: "
-                    );
-                    String merkAT =
-                            input.nextLine();
+                    System.out.print("Jenis Alat Tulis: ");
+                    String jenisAT = input.nextLine();
 
-                    if (opsiDetail.equalsIgnoreCase("ya")) {
+                    System.out.print( "Merk Alat Tulis: ");
+                    String merkAT = input.nextLine();
+
+                    if (opsiDetail.equalsIgnoreCase("Ya")) {
                         // Memanggil Constructor 2 (ada parameter detailBarang)
                         new AlatTulis(
                             id,
@@ -140,8 +145,7 @@ mereka akan punya alamat memori yang berbeda.
                             "AlatTulis",
                             detailBarang,
                             jenisAT,
-                            merkAT
-                    );
+                            merkAT);
                     } else {
                         // Memanggil Constructor 1 (tanpa parameter detailBarang)
                         new AlatTulis(
@@ -152,8 +156,7 @@ mereka akan punya alamat memori yang berbeda.
                             hargaBox,
                             "AlatTulis",
                             jenisAT,
-                            merkAT
-                    );
+                            merkAT);
                     }
                     break;
 
@@ -161,31 +164,20 @@ mereka akan punya alamat memori yang berbeda.
                     //case ini terpilih jika value dari variable pilih adalah 3 atau 'Alat Kantor'
 
                     //ini adalah atribut milik class turunan
-                    System.out.print(
-                            "Jenis Alat Kantor: "
-                    );
-                    String jenisAK =
-                            input.nextLine();
-                    System.out.print(
-                            "Merk Alat Kantor: "
-                    );
-                    String merkAK =
-                            input.nextLine();
+                    System.out.print("Jenis Alat Kantor: ");
+                    String jenisAK = input.nextLine();
+
+                    System.out.print("Merk Alat Kantor: ");
+                    String merkAK = input.nextLine();
                     
-                    if (opsiDetail.equalsIgnoreCase("ya")) {
+                    if (opsiDetail.equalsIgnoreCase("Ya")) {
                         // Memanggil Constructor 2 (ada parameter detailBarang)
                         
-                        System.out.print(
-                            "Bahan : "
-                        );
-                        String bahan =
-                            input.nextLine();
+                        System.out.print("Bahan : ");
+                        String bahan = input.nextLine();
                         
-                        System.out.print(
-                            "Warna Alat Kantor: "
-                        );
-                        String warnaAK =
-                            input.nextLine();
+                        System.out.print("Warna Alat Kantor: ");
+                        String warnaAK = input.nextLine();
 
                         new AlatKantor(
                             id,
@@ -198,8 +190,7 @@ mereka akan punya alamat memori yang berbeda.
                             jenisAK,
                             merkAK,
                             bahan,
-                            warnaAK
-                    );
+                            warnaAK);
                     } else {
                         // Memanggil Constructor 1 (tanpa parameter detailBarang)
                         new AlatKantor(
@@ -210,25 +201,21 @@ mereka akan punya alamat memori yang berbeda.
                             hargaBox,
                             "AlatKantor",
                             jenisAK,
-                            merkAK
-                    );
+                            merkAK);
                     }
                     break;
 
                 case 4:
-                    
                     //case ini terpilih jika value dari variable pilih adalah 4 atau 'Buku'
 
                     //ini adalah atribut milik class turunan
                     System.out.print("Jenis Buku: ");
-                    String jenisBuku =
-                            input.nextLine();
-                    System.out.print("Merk Buku: ");
-                    String merkBuku =
-                            input.nextLine();
-                            
+                    String jenisBuku = input.nextLine();
 
-                    if (opsiDetail.equalsIgnoreCase("ya")) {
+                    System.out.print("Merk Buku: ");
+                    String merkBuku = input.nextLine(); 
+
+                    if (opsiDetail.equalsIgnoreCase("Ya")) {
                         System.out.print("Lembar buku : ");
                         int lembarBuku = input.nextInt();
                                 
@@ -243,8 +230,7 @@ mereka akan punya alamat memori yang berbeda.
                             detailBarang,
                             jenisBuku,
                             merkBuku,
-                            lembarBuku
-                        );
+                            lembarBuku);
                     } else {
                         // Memanggil Constructor 1 (tanpa parameter detailBarang) 
                         new Buku(
@@ -255,22 +241,17 @@ mereka akan punya alamat memori yang berbeda.
                             hargaBox,
                             "Buku",
                             jenisBuku,
-                            merkBuku
-                        );
+                            merkBuku);
                     }
                     break;
 
                 default:
-                    System.out.println(
-                            "Kategori tidak valid"
-                    );
+                    System.out.println("Kategori tidak valid");
             }
 
-            System.out.print(
-                    "\nTambah barang lagi? (ya/tidak): "
-            );
+            System.out.print("\nTambah barang lagi? (Ya/Tidak): ");
             lanjut = input.nextLine();
-        } while (lanjut.equalsIgnoreCase("ya"));
+        } while (lanjut.equalsIgnoreCase("Ya"));
     }
 
     public static void menuUtama() {
@@ -284,31 +265,14 @@ mereka akan punya alamat memori yang berbeda.
         do {
 
             //interface dari menu
-            System.out.println(
-                    "\n========== MENU =========="
-            );
-            System.out.println(
-                    "1. Lihat Inventaris"
-            );
-            System.out.println(
-                    "2. Tambah Barang"
-            );
-            System.out.println(
-                    "3. Tambah Transaksi"
-            );
-            System.out.println(
-                    "4. Lihat History"
-            );
-                    System.out.println(
-                    "5. Edit Barang"
-            );
-                    System.out.println(
-                    "6. Manajemen"
-            );
-
-            System.out.println(
-                    "7. Logout"
-            );
+            System.out.println("\n========== MENU ==========");
+            System.out.println("1. Lihat Inventaris");
+            System.out.println("2. Tambah Barang");
+            System.out.println("3. Tambah Transaksi");
+            System.out.println("4. Lihat History");
+            System.out.println("5. Edit Barang");
+            System.out.println("6. Manajemen");
+            System.out.println("7. Logout");
             System.out.print("Pilih Menu: ");
             menu = input.nextInt();
             input.nextLine();
@@ -346,86 +310,88 @@ mereka akan punya alamat memori yang berbeda.
                     break;
 
                 case 7:
-                    System.out.println(
-                            "Logout berhasil"
-                    );
+                    System.out.println("Logout berhasil");
                     break;
 
                 default:
-                    System.out.println(
-                            "Menu tidak valid"
-                    );
+                    System.out.println("Menu tidak valid");
             }
         } while (menu != 5);
     }
 
     public static void infoManajemen(){
         // function ini berfungsi untuk menampilkan jumlah stok seluruh barang dan perkategori
-        System.out.println("Total stok barang    : " + Barang.totalStokBarang);
-        System.out.println("Total stok kertas    : " + Kertas.totalStokKertas);
-        System.out.println("Total stok alat tulis    : "+ AlatTulis.totalStokAlatTulis);
-        System.out.println("Total stok alat kantor    : "+ AlatKantor.totalStokAlatKantor);
-        System.out.println("Total stok buku    : "+ Buku.totalStokBuku);
+        System.out.println("Total stok barang       : " + Barang.getTotalStokBarang());
+        System.out.println("Total stok kertas       : " + Kertas.getTotalStokKertas());
+        System.out.println("Total stok alat tulis   : "+ AlatTulis.getTotalStokAlatTulis());
+        System.out.println("Total stok alat kantor  : "+ AlatKantor.getTotalStokAlatKantor());
+        System.out.println("Total stok buku         : "+ Buku.getTotalStokBuku());
     }
 
     public static void tambahTransaksi() {
         // function ini berfungsi untuk menambah transaksi 
-        System.out.print(
-                "\nMasukkan ID Transaksi: "
-        );
+        System.out.println("\n╔══════════════════════════════════╗");
+        System.out.println("║        TRANSAKSI BARU            ║");
+        System.out.println("╚══════════════════════════════════╝");
+        
+        System.out.print("Nomor Struk     : ");
         int idTransaksi = input.nextInt();
 
-        System.out.print(
-                "Masukkan Diskon (%): "
-        );
+        System.out.print("Kode Diskon (%) : ");
         int diskon = input.nextInt();
         input.nextLine();
 
-        Transaksi transaksi =
-                new Transaksi(idTransaksi,diskon,LocalDateTime.now()
-                );
+        System.out.println("\n----------------------------------");
+
+        Transaksi transaksi = new Transaksi(idTransaksi, diskon, LocalDateTime.now());
         String lanjut;
 
         //loop ini dilakukan karena dalam satu transaksi bisa berisi banyak barang
         do {
             inventarisBarang.tampilkan();
-            System.out.print(
-                    "\nMasukkan ID Barang: "
-            );
+            System.out.println("----------------------------------\n");
 
+            System.out.print("Scan / Masukkan ID Barang : ");
             String idCari = input.nextLine();
             Barang barangDipilih = inventarisBarang.cariBarang(idCari); //memanggil method cariBarang milik inventarisBarang 
+            
             if (barangDipilih != null) { //mengecek dan memastikan barangDipilih itu benar benar ada
-                if (barangDipilih.stokBarang > 0) { //dan stoknya tidak kosong
-                    transaksi.tambahBarang(
-                            barangDipilih
-                    );
-                    barangDipilih.stokBarang--; //mengurangi stok barang pada objek barang
-                    Barang.totalStokBarang--; //mengurangi stok barang (seluruh barang) pada class barang
-                        if (barangDipilih instanceof Kertas) Kertas.totalStokKertas--; // mengurangi stok pada class turunan ( jika class turunannya kertas)
-                        else if (barangDipilih instanceof AlatTulis) AlatTulis.totalStokAlatTulis--; // mengurangi stok pada class turunan ( jika class turunannya alat tulis)
-                        else if (barangDipilih instanceof AlatKantor) AlatKantor.totalStokAlatKantor--; // mengurangi stok pada class turunan ( jika class turunannya alat kantor)
-                        else if (barangDipilih instanceof Buku) Buku.totalStokBuku--; // mengurangi stok pada class turunan ( jika class turunannya buku)
+                if (barangDipilih.getStokBarang() > 0) { //dan stoknya tidak kosong
+                    System.out.println(">> Barang ditemukan : " + barangDipilih.getNamaBarang() + " | Stok tersedia: " + barangDipilih.getStokBarang() + " | Harga: Rp" + barangDipilih.getHargaBarangPerSatuan());
+                    System.out.print(">> Masukkan jumlah beli : ");
+                    int jumlahBeli = input.nextInt();
+                    input.nextLine();
 
-                    System.out.println(
-                            "Barang berhasil ditambahkan"
-                    );
+                    if (jumlahBeli > 0 && jumlahBeli <= barangDipilih.getStokBarang()) { // memvalidasi jumlah beli agar lebih dari 0 dan tidak melebihi stok yang tersedia
+                        transaksi.tambahBarang(barangDipilih, jumlahBeli); // menambahkan barang beserta jumlah belinya ke dalam objek transaksi
+                        
+                        barangDipilih.setStokBarang(barangDipilih.getStokBarang() - jumlahBeli); // mengurangi stok barang pada objek barang menggunakan setter sesuai dengan jumlah beli
+                        Barang.setTotalStokBarang(Barang.getTotalStokBarang() - jumlahBeli); // mengurangi stok barang (seluruh barang) pada class barang menggunakan setter
+                        
+                        if (barangDipilih instanceof Kertas) Kertas.setTotalStokKertas(Kertas.getTotalStokKertas() - jumlahBeli); // mengurangi stok pada class turunan (jika class turunannya kertas)
+                        else if (barangDipilih instanceof AlatTulis) AlatTulis.setTotalStokAlatTulis(AlatTulis.getTotalStokAlatTulis() - jumlahBeli); // mengurangi stok pada class turunan (jika class turunannya alat tulis)
+                        else if (barangDipilih instanceof AlatKantor) AlatKantor.setTotalStokAlatKantor(AlatKantor.getTotalStokAlatKantor() - jumlahBeli); // mengurangi stok pada class turunan (jika class turunannya alat kantor)
+                        else if (barangDipilih instanceof Buku) Buku.setTotalStokBuku(Buku.getTotalStokBuku() - jumlahBeli); // mengurangi stok pada class turunan (jika class turunannya buku)
+
+                        System.out.println(">> " + jumlahBeli + "x " + barangDipilih.getNamaBarang() + " berhasil ditambahkan ke struk.");
+                    } else {
+                        System.out.println(">> Gagal: Stok tidak mencukupi atau input jumlah salah.");
+                    }
                 } else {
-                    System.out.println(
-                            "Stok habis"
-                    );
+                    System.out.println(">> Stok habis");
                 }
             } else {
-                System.out.println(
-                        "Barang tidak ditemukan"
-                );
+                System.out.println(">> Barang tidak ditemukan.");
             }
-            System.out.print(
-                    "\nTambah barang lagi? (ya/tidak): "
-            );
-
+            
+            System.out.print("\nTambah item lagi? (ya/tidak) : ");
             lanjut = input.nextLine();
-        } while (lanjut.equalsIgnoreCase("ya"));
+
+            if (lanjut.equalsIgnoreCase("Ya")) { // memberikan jeda visual pemisah jika user ingin menambah barang lagi
+                System.out.println("\n----------------------------------");
+            }
+            
+        } while (lanjut.equalsIgnoreCase("Ya"));
 
         transaksi.buatTransaksi(); //memanggil method buatTransaksi milik class Transaksi (untuk membuat objek transaksi)
         transaksi.tampilkanTransaksi(); //memanggil method tampilkanTransaksi milik class Transaksi (untuk menampilkan transaksi)
@@ -438,26 +404,20 @@ mereka akan punya alamat memori yang berbeda.
         //menampilkan semua list barang yang ada di objek inventarisBarang (class sisteminventarisbarang)
         inventarisBarang.tampilkan();
 
-        System.out.print(
-                "\nMasukkan ID Barang: "
-        );
+        System.out.print("\nMasukkan ID Barang: ");
 
         String idCari = input.nextLine();
         //mencari barang yang sesuai input di dalam penyimpanan milik class SistemInventarisBarang yang bersifat statissss
         Barang barangEdit = inventarisBarang.cariBarang(idCari);
 
         if (barangEdit != null) {
-            System.out.print(
-                    "Masukkan Stok Baru: "
-            );
+            System.out.print("Masukkan Stok Baru: ");
             int stokBaru = input.nextInt();
-            System.out.print(
-                    "Masukkan Harga Box Baru: "
-            );
+
+            System.out.print("Masukkan Harga Box Baru: ");
             int hargaBoxBaru = input.nextInt();
-            System.out.print(
-                    "Masukkan Harga Satuan Baru: "
-            );
+
+            System.out.print("Masukkan Harga Satuan Baru: ");
             int hargaSatuanBaru = input.nextInt();
             input.nextLine();
 
@@ -467,16 +427,9 @@ mereka akan punya alamat memori yang berbeda.
                     hargaBoxBaru,
                     hargaSatuanBaru
             );
-
-            System.out.println(
-                    "Barang berhasil diedit"
-            );
+            System.out.println("Barang berhasil diedit");
         } else {
-            System.out.println(
-                    "Barang tidak ditemukan"
-            );
+            System.out.println("Barang tidak ditemukan");
         }
     }
-
-
 }
