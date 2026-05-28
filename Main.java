@@ -316,7 +316,7 @@ mereka akan punya alamat memori yang berbeda.
                 default:
                     System.out.println("Menu tidak valid");
             }
-        } while (menu != 5);
+        } while (menu != 7);
     }
 
     public static void infoManajemen(){
